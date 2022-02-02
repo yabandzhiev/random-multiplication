@@ -59,9 +59,9 @@ const MultiplicationCard = () => {
 
   function handleClick(e) {
     if (Number(e.target.textContent) === aRandom * bRandom) {
-      e.target.style.background = "#4254bc";
       setSuccess(true);
       setMessage("Play Again?");
+      e.target.style.background = "#4254bc";
     } else {
       e.target.textContent = "";
       e.target.disabled = true;
@@ -85,19 +85,21 @@ const MultiplicationCard = () => {
         </div>
 
         <div className="row-el2">
-          {success ? (
-            <div
-              onClick={() => (playAgain ? setPlayAgain(false) : setPlayAgain(true))}
-              id="again"
-              className="button-el"
-            >
-              {message}
-            </div>
-          ) : (
-            <div id="msg" className="button-el">
-              {message}
-            </div>
-          )}
+          {message &&
+            (success ? (
+              <div
+                onClick={() => (playAgain ? setPlayAgain(false) : setPlayAgain(true))}
+                id="again"
+                className="button-el"
+                style={{ backgroundColor: "#546fc3" }}
+              >
+                {message}
+              </div>
+            ) : (
+              <div id="msg" className="button-el" style={{ backgroundColor: "red" }}>
+                {message}
+              </div>
+            ))}
         </div>
 
         <div className="row-el">
